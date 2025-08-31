@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from the 'public' directory
-app.use(express.static('public'));
+app.use(express.static('public')); // Static files served from 'public' directory
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost/pruebas_usuario', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -33,7 +33,7 @@ app.post('/api/comentarios', (req, res) => {
   }
   // Check if comment is present in the request body
   if (!req.body.comment) {
-    return res.status(400).send('Comentario es requerido'); // Respond with an error
+    return res.status(400).send('Comentario es requerido'); // Respond with an error if the comment is missing
   }
   // Log the received comment for debugging purposes
   console.log(req.body); // Log the received comment
