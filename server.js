@@ -22,7 +22,7 @@ mongoose.connect('mongodb://localhost/pruebas_usuario', { useNewUrlParser: true,
 
 // Route for serving the main HTML file
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
+  res.sendFile(__dirname + '/public/index.html'); // Send the main HTML file
 });
 
 // Route to receive and save user comments
@@ -38,5 +38,5 @@ app.post('/api/comentarios', (req, res) => {
 
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
+  console.log(`Servidor corriendo en el puerto ${PORT}`); // Log server startup
 });
