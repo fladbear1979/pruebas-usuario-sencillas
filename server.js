@@ -1,3 +1,4 @@
+// Import required modules
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -26,9 +27,9 @@ app.get('/', (req, res) => {
 
 // Route to receive and save user comments
 app.post('/api/comentarios', (req, res) => {
-  // Here we would save the comments to the database
+  // Log the received comment for debugging purposes
   console.log(req.body); // Log the received comment
-  res.status(201).send('Comentario recibido');
+  res.status(201).send('Comentario recibido'); // Respond with confirmation
 });
 
 // Start the server and listen on the specified port
