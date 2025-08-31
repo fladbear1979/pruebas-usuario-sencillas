@@ -14,7 +14,10 @@ app.use(express.static('public'));
 // Conexión a MongoDB
 mongoose.connect('mongodb://localhost/pruebas_usuario', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB conectado'))
-  .catch(err => console.log(err));
+  .catch(err => {
+    console.error('Error al conectar a MongoDB:', err);
+    process.exit(1); // Exit the process with failure
+  });
 
 // Route for serving the main HTML file
 app.get('/', (req, res) => {
