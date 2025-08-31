@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 // Ruta para obtener y guardar comentarios de usuarios
 app.post('/api/comentarios', (req, res) => {
   // Aquí se guardarían los comentarios en la base de datos
-  console.log(req.body);
+  console.log(req.body); // Log the received comment
   res.status(201).send('Comentario recibido');
 });
 
