@@ -27,6 +27,10 @@ app.get('/', (req, res) => {
 
 // Route to receive and save user comments
 app.post('/api/comentarios', (req, res) => {
+  // Check if comment is present in the request body
+  if (!req.body.comment) {
+    return res.status(400).send('Comentario es requerido'); // Respond with an error
+  }
   // Log the received comment for debugging purposes
   console.log(req.body); // Log the received comment
   res.status(201).send('Comentario recibido'); // Respond with confirmation
