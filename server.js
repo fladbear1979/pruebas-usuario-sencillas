@@ -5,8 +5,10 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Middleware to parse JSON and URL-encoded data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+// Serve static files from the 'public' directory
 app.use(express.static('public'));
 
 // Conexión a MongoDB
@@ -14,17 +16,19 @@ mongoose.connect('mongodb://localhost/pruebas_usuario', { useNewUrlParser: true,
   .then(() => console.log('MongoDB conectado'))
   .catch(err => console.log(err));
 
+// Route for serving the main HTML file
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
-// Ruta para obtener comentarios de usuarios
+// Ruta para obtener y guardar comentarios de usuarios
 app.post('/api/comentarios', (req, res) => {
   // Aquí se guardarían los comentarios en la base de datos
   console.log(req.body);
   res.status(201).send('Comentario recibido');
 });
 
+// Start the server and listen on the specified port
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
