@@ -27,6 +27,10 @@ app.get('/', (req, res) => {
 
 // Route to receive and save user comments
 app.post('/api/comentarios', (req, res) => {
+  // Check if the request body is JSON
+  if (typeof req.body !== 'object') {
+    return res.status(400).send('Entrada inválida'); // Respond with an error for invalid JSON
+  }
   // Check if comment is present in the request body
   if (!req.body.comment) {
     return res.status(400).send('Comentario es requerido'); // Respond with an error
