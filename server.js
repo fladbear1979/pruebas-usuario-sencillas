@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
 
-// Conexión a MongoDB
+// Connect to MongoDB
 mongoose.connect('mongodb://localhost/pruebas_usuario', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB conectado'))
   .catch(err => {
@@ -24,9 +24,9 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
-// Ruta para obtener y guardar comentarios de usuarios
+// Route to receive and save user comments
 app.post('/api/comentarios', (req, res) => {
-  // Aquí se guardarían los comentarios en la base de datos
+  // Here we would save the comments to the database
   console.log(req.body); // Log the received comment
   res.status(201).send('Comentario recibido');
 });
